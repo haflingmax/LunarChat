@@ -15,7 +15,6 @@ pids
 *.pid
 *.seed
 .git
-docs/
 
 # CI/CD data
 test-image*
