@@ -72,6 +72,7 @@ const AssistantConversationStarters: React.FC<AssistantConversationStartersProps
         {/* Persistent starter, used for creating only */}
         <div className="relative">
           <input
+            id="conversation_starters"
             ref={(el) => (inputRefs.current[0] = el)}
             value={newStarter}
             maxLength={64}

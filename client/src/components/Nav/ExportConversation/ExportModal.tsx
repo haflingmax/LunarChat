@@ -100,10 +100,11 @@ export default function ExportModal({
                 />
               </div>
               <div className="col-span-1 flex w-full flex-col items-start justify-start gap-2">
-                <Label htmlFor="type" className="text-left text-sm font-medium">
+                <Label htmlFor="export-type" className="text-left text-sm font-medium">
                   {localize('com_nav_export_type')}
                 </Label>
                 <Dropdown
+                  id="export-type"
                   value={type}
                   onChange={handleTypeChange}
                   options={TYPE_OPTIONS}

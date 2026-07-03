@@ -53,6 +53,7 @@ function getOptionText(option: string | Option | OptionWithIcon): string {
 }
 
 function SelectDropDown({
+  id,
   title: _title,
   value,
   disabled,
@@ -109,6 +110,7 @@ function SelectDropDown({
             <>
               <ListboxButton
                 ref={buttonRef}
+                id={id}
                 data-testid="select-dropdown-button"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {

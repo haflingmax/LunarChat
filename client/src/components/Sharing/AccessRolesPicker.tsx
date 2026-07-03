@@ -71,13 +71,14 @@ export default function AccessRolesPicker({
   });
 
   return (
-    <div className={className} id={id}>
+    <div className={className}>
       <DropdownPopup
         menuId="access-roles-menu"
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         trigger={
           <Ariakit.MenuButton
+            id={id}
             aria-label={selectedRoleInfo?.description || 'Select role'}
             className={cn(
               'flex items-center justify-between gap-2 rounded-xl border border-border-light bg-transparent px-3 py-2 text-sm transition-colors hover:bg-surface-tertiary',

@@ -148,6 +148,10 @@ function DynamicSlider({
     return null;
   }
 
+  const numberInputId = `${settingKey}-dynamic-setting-input-number`;
+  const displayInputId = `${settingKey}-dynamic-setting-input`;
+  const labelTargetId = includeInput && !isEnum ? numberInputId : displayInputId;
+
   return (
     <div
       className={cn(
@@ -159,7 +163,7 @@ function DynamicSlider({
         <HoverCardTrigger className="grid w-full items-center gap-2">
           <div className="flex w-full items-center justify-between">
             <Label
-              htmlFor={`${settingKey}-dynamic-setting`}
+              htmlFor={labelTargetId}
               className="break-words text-left text-xs font-medium"
             >
               {labelCode ? (localize(label as TranslationKeys) ?? label) : label || settingKey}{' '}
@@ -171,7 +175,7 @@ function DynamicSlider({
             </Label>
             {includeInput && !isEnum ? (
               <InputNumber
-                id={`${settingKey}-dynamic-setting-input-number`}
+                id={numberInputId}
                 disabled={readonly}
                 value={inputValue ?? defaultValue}
                 onChange={(value) => setInputValue(Number(value))}
@@ -190,7 +194,7 @@ function DynamicSlider({
               />
             ) : (
               <Input
-                id={`${settingKey}-dynamic-setting-input`}
+                id={displayInputId}
                 disabled={readonly}
                 value={getDisplayValue(selectedValue)}
                 aria-label={localize(label as TranslationKeys)}

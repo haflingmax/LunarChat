@@ -94,6 +94,7 @@ function DynamicCombobox({
             </div>
           )}
           <ControlCombobox
+            selectId={`${settingKey}-dynamic-combobox`}
             displayValue={selectedValue}
             selectPlaceholder={
               selectPlaceholderCode === true

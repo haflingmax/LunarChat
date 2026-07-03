@@ -4,7 +4,6 @@ import { Flipper, Flipped } from 'react-flip-toolkit';
 import { getEndpointField } from 'librechat-data-provider';
 import {
   Dialog,
-  Label,
   PinIcon,
   EditIcon,
   TrashIcon,
@@ -51,14 +50,13 @@ const PresetItems: FC<{
         tabIndex={-1}
       >
         <div className="flex h-full grow items-center justify-end gap-2">
-          <label
-            htmlFor="default-preset"
+          <span
             className="w-40 truncate rounded bg-transparent py-1 text-xs font-medium text-gray-600 transition-colors dark:bg-transparent dark:text-gray-300 sm:w-72"
           >
             {defaultPreset
               ? `${localize('com_endpoint_preset_default_item')} ${defaultPreset.title}`
               : localize('com_endpoint_preset_default_none')}
-          </label>
+          </span>
           <Dialog>
             <DialogTrigger asChild>
               <button
@@ -88,12 +86,9 @@ const PresetItems: FC<{
                 <>
                   <div className="flex w-full flex-col items-center gap-2">
                     <div className="grid w-full items-center gap-2">
-                      <Label
-                        htmlFor="preset-item-clear-all"
-                        className="text-left text-sm font-medium"
-                      >
+                      <p className="text-left text-sm font-medium">
                         {localize('com_endpoint_presets_clear_warning')}
-                      </Label>
+                      </p>
                     </div>
                   </div>
                 </>

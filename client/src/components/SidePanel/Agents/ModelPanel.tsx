@@ -128,7 +128,7 @@ export default function ModelPanel({
           <label
             id="provider-label"
             className="text-token-text-primary model-panel-label mb-2 block text-sm font-medium"
-            htmlFor="provider"
+            htmlFor="agent-model-provider"
           >
             {localize('com_ui_provider')} <span className="text-red-500">*</span>
           </label>
@@ -149,6 +149,7 @@ export default function ModelPanel({
               return (
                 <>
                   <ControlCombobox
+                    selectId="agent-model-provider"
                     selectedValue={value}
                     displayValue={alternateName[display] ?? display}
                     selectPlaceholder={localize('com_ui_select_provider')}
@@ -181,7 +182,7 @@ export default function ModelPanel({
               'text-token-text-primary model-panel-label mb-2 block text-sm font-medium',
               !provider && 'text-gray-500 dark:text-gray-400',
             )}
-            htmlFor="model"
+            htmlFor="agent-model-select"
           >
             {localize('com_ui_model')} <span className="text-red-500">*</span>
           </label>
@@ -193,6 +194,7 @@ export default function ModelPanel({
               return (
                 <>
                   <ControlCombobox
+                    selectId="agent-model-select"
                     selectedValue={field.value || ''}
                     selectPlaceholder={
                       provider

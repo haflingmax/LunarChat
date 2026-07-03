@@ -33,7 +33,10 @@ const useCategorySync = (agent_id: string | null) => {
 /**
  * A component for selecting agent categories with form validation
  */
-const AgentCategorySelector: React.FC<{ className?: string }> = ({ className }) => {
+const AgentCategorySelector: React.FC<{ className?: string; selectId?: string }> = ({
+  className,
+  selectId,
+}) => {
   const localize = useLocalize();
   const formContext = useFormContext();
   const { categories } = useAgentCategories();
@@ -88,6 +91,7 @@ const AgentCategorySelector: React.FC<{ className?: string }> = ({ className }) 
             ariaLabel={ariaLabel}
             isCollapsed={false}
             showCarat={true}
+            selectId={selectId}
           />
         );
       }}
@@ -97,7 +101,8 @@ const AgentCategorySelector: React.FC<{ className?: string }> = ({ className }) 
 
 const MemoizedAgentCategorySelector = memo(
   AgentCategorySelector,
-  (prevProps, nextProps) => prevProps.className === nextProps.className,
+  (prevProps, nextProps) =>
+    prevProps.className === nextProps.className && prevProps.selectId === nextProps.selectId,
 );
 MemoizedAgentCategorySelector.displayName = 'AgentCategorySelector';
 

@@ -343,19 +343,20 @@ export default function AgentConfig() {
         </div>
         {/* Category */}
         <div className="mb-4">
-          <label className={labelClass} htmlFor="category-selector">
+          <label className={labelClass} htmlFor="agent-category-selector">
             {localize('com_ui_category')} <span className="text-red-500">*</span>
           </label>
-          <AgentCategorySelector className="w-full" />
+          <AgentCategorySelector className="w-full" selectId="agent-category-selector" />
         </div>
         {/* Instructions */}
         <Instructions />
         {/* Model and Provider */}
         <div className="mb-4">
-          <label className={labelClass} htmlFor="provider">
+          <label className={labelClass} htmlFor="agent-builder-provider">
             {localize('com_ui_model')} <span className="text-red-500">*</span>
           </label>
           <button
+            id="agent-builder-provider"
             type="button"
             onClick={() => setActivePanel(Panel.model)}
             className="btn btn-neutral border-token-border-light relative h-9 w-full rounded-lg font-medium"

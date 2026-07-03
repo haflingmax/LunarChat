@@ -8,6 +8,7 @@ import { cn } from '~/utils/';
 import './Dropdown.css';
 
 interface DropdownProps {
+  id?: string;
   value?: string;
   label?: string;
   onChange: (value: string) => void;
@@ -37,6 +38,7 @@ const normalizeOption = (item: string | Option): Option =>
   typeof item === 'string' ? { value: item, label: item } : item;
 
 const Dropdown: React.FC<DropdownProps> = ({
+  id,
   value: selectedValue,
   label = '',
   onChange,
@@ -135,6 +137,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     <div className={cn('relative', className)}>
       <Select.Select
         store={selectProps}
+        id={id}
         disabled={disabled}
         className={cn(
           'focus:ring-offset-ring-offset relative inline-flex items-center justify-between rounded-xl border border-input bg-background px-3 py-2 text-sm text-text-primary transition-all duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground focus:ring-ring-primary',

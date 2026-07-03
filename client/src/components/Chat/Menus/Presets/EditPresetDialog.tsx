@@ -157,10 +157,11 @@ const EditPresetDialog = ({
               />
             </div>
             <div className="flex w-full flex-col">
-              <Label htmlFor="endpoint" className="mb-1 text-left text-sm font-medium">
+              <Label htmlFor="preset-endpoint" className="mb-1 text-left text-sm font-medium">
                 {localize('com_endpoint')}
               </Label>
               <SelectDropDown
+                id="preset-endpoint"
                 value={endpoint || ''}
                 setValue={switchEndpoint}
                 showLabel={false}

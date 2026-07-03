@@ -350,7 +350,7 @@ export default function AssistantPanel({
           </div>
           {/* Model */}
           <div className="mb-6">
-            <label className={labelClass} htmlFor="model">
+            <label className={labelClass} htmlFor="assistant-model">
               {localize('com_ui_model')}
             </label>
             <Controller
@@ -360,6 +360,7 @@ export default function AssistantPanel({
               render={({ field, fieldState: { error } }) => (
                 <>
                   <SelectDropDown
+                    id="assistant-model"
                     emptyTitle={true}
                     value={field.value}
                     setValue={field.onChange}

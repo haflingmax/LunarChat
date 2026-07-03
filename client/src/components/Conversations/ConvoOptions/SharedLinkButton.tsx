@@ -8,7 +8,6 @@ import {
   ResourceType,
 } from 'librechat-data-provider';
 import {
-  Label,
   Button,
   Spinner,
   OGDialog,
@@ -251,13 +250,13 @@ export default function SharedLinkButton({
             </OGDialogHeader>
             <div className="flex w-full flex-col items-center gap-2">
               <div className="grid w-full items-center gap-2">
-                <Label htmlFor="dialog-confirm-delete" className="text-left text-sm font-medium">
+                <p className="text-left text-sm font-medium">
                   <Trans
                     i18nKey="com_ui_delete_confirm_strong"
                     values={{ title: shareId }}
                     components={{ strong: <strong /> }}
                   />
-                </Label>
+                </p>
               </div>
             </div>
             <div className="flex justify-end gap-4 pt-4">
