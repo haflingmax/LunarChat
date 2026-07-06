@@ -3,6 +3,9 @@
 # Local project documentation, planning notes, and Codex working docs.
 docs/
 
+# Local publication-safety overlays
+scripts/publication-safety/config.local.json
+
 # Logs
 data-node
 meili_data*
