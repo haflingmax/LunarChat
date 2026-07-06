@@ -1449,10 +1449,30 @@ export type TRumConfig = {
 
 export type StartupConfigContext = 'share';
 
+export type TKnowledgeOSStartupConfig = {
+  enabled: boolean;
+};
+
+export type TKnowledgeOSHealthResponse = {
+  enabled: boolean;
+  module: 'knowledge-os';
+  phase: 'foundation';
+  schema: Record<string, boolean>;
+  rag: {
+    available: false;
+    reason: string;
+  };
+  qwen: {
+    available: false;
+    reason: string;
+  };
+};
+
 export type TStartupConfig = {
   appTitle: string;
   socialLogins?: string[];
   interface?: TInterfaceConfig;
+  knowledgeOS?: TKnowledgeOSStartupConfig;
   turnstile?: TTurnstileConfig;
   balance?: TBalanceConfig;
   transactions?: TTransactionsConfig;

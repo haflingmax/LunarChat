@@ -250,6 +250,10 @@ export const getStartupConfig = (
   return request.get(endpoints.config(options?.context));
 };
 
+export const getKnowledgeOSHealth = (): Promise<config.TKnowledgeOSHealthResponse> => {
+  return request.get(endpoints.knowledgeOSHealth());
+};
+
 export const getAIEndpoints = (): Promise<t.TEndpointsConfig> => {
   return request.get(endpoints.aiEndpoints());
 };

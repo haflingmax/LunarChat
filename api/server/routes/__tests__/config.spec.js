@@ -104,6 +104,7 @@ afterEach(() => {
   delete process.env.ANALYTICS_GTM_ID;
   delete process.env.CUSTOM_FOOTER;
   delete process.env.HELP_AND_FAQ_URL;
+  delete process.env.ENABLE_KNOWLEDGE_OS;
 });
 
 describe('GET /api/config', () => {
@@ -148,6 +149,7 @@ describe('GET /api/config', () => {
 
     it('should return minimal payload without authenticated-only fields', async () => {
       mockGetAppConfig.mockResolvedValue(baseAppConfig);
+      process.env.ENABLE_KNOWLEDGE_OS = 'true';
       const app = createApp(null);
 
       const response = await request(app).get('/api/config');
@@ -163,6 +165,7 @@ describe('GET /api/config', () => {
       expect(response.body).not.toHaveProperty('sharePointPickerGraphScope');
       expect(response.body).not.toHaveProperty('sharePointPickerSharePointScope');
       expect(response.body).not.toHaveProperty('conversationImportMaxFileSize');
+      expect(response.body).not.toHaveProperty('knowledgeOS');
     });
 
     it('should strip authenticated-only informational fields from unauthenticated response (#12688)', async () => {
@@ -381,6 +384,17 @@ describe('GET /api/config', () => {
       expect(response.body.bundlerURL).toBe('https://bundler.test');
       expect(response.body.staticBundlerURL).toBe('https://static-bundler.test');
       expect(response.body.conversationImportMaxFileSize).toBe(5000000);
+    });
+
+    it('should expose Knowledge OS feature state only after login', async () => {
+      mockGetAppConfig.mockResolvedValue(baseAppConfig);
+      process.env.ENABLE_KNOWLEDGE_OS = 'true';
+      const app = createApp(mockUser);
+
+      const response = await request(app).get('/api/config');
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body.knowledgeOS).toEqual({ enabled: true });
     });
 
     it('should include post-login informational fields', async () => {

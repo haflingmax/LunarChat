@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   isEnabled,
+  isKnowledgeOsEnabled,
   getBalanceConfig,
   getCloudFrontConfig,
   resolveBuildInfo,
@@ -261,6 +262,9 @@ router.get('/', async function (req, res) {
       sharedLinksSnapshotFilesEnabled: sharedLinksEnabled && isFileSnapshotEnabled(appConfig),
       socialLogins: appConfig?.registration?.socialLogins ?? defaultSocialLogins,
       interface: appConfig?.interfaceConfig,
+      knowledgeOS: {
+        enabled: isKnowledgeOsEnabled(process.env),
+      },
       titleGenerationTiming: resolveTitleTiming({
         appConfig,
         endpoint: EModelEndpoint.agents,

@@ -1,11 +1,12 @@
 import { useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
-import { MessagesSquare } from 'lucide-react';
+import { BookOpenText, MessagesSquare } from 'lucide-react';
 import { useUserKeyQuery } from 'librechat-data-provider/react-query';
 import { getConfigDefaults, getEndpointField } from 'librechat-data-provider';
 import type { TEndpointsConfig } from 'librechat-data-provider';
 import type { NavLink } from '~/common';
 import ConversationsSection from '~/components/UnifiedSidebar/ConversationsSection';
+import KnowledgeOSPanel from '~/components/SidePanel/KnowledgeOS/KnowledgeOSPanel';
 import { useGetEndpointsQuery, useGetStartupConfig } from '~/data-provider';
 import useSideNavLinks from '~/hooks/Nav/useSideNavLinks';
 import store from '~/store';
@@ -58,8 +59,21 @@ export default function useUnifiedSidebarLinks() {
       Component: ConversationsSection,
     };
 
-    return [conversationLink, ...sideNavLinks];
-  }, [sideNavLinks]);
+    const knowledgeOSLinks: NavLink[] =
+      startupConfig?.knowledgeOS?.enabled === true
+        ? [
+            {
+              title: 'com_ui_knowledge_os',
+              label: '',
+              icon: BookOpenText,
+              id: 'knowledge-os',
+              Component: KnowledgeOSPanel,
+            },
+          ]
+        : [];
+
+    return [conversationLink, ...knowledgeOSLinks, ...sideNavLinks];
+  }, [sideNavLinks, startupConfig?.knowledgeOS?.enabled]);
 
   return links;
 }

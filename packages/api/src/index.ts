@@ -73,6 +73,8 @@ export * from './shared-links/config';
 export * from './stream';
 /* Diagnostics */
 export { memoryDiagnostics } from './utils/memory';
+/* Knowledge OS */
+export * from './knowledge-os';
 /* RUM */
 export * from './rum/proxy';
 /* types */
